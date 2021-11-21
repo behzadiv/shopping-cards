@@ -1,0 +1,23 @@
+.mainNavigation {
+    background-color:#DBEAFE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4.5rem;
+}
+.mainNavigation ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.mainNavigation a{
+    margin: 0 1rem;
+    display: block;
+    padding: .5rem 1rem;
+    border-radius: 5px;
+}
+.mainNavigation a:hover,.activeLink{
+    background-color: #fff;
+    color:#6D28D9 ;
+}
