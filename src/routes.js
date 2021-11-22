@@ -1,9 +1,9 @@
-import Cards from "./pages/Cards";
+import Cards from "./pages/Carts";
 import HomePage from "./pages/HomePage";
 
 const routes = [
     {path:"/cards",element:<Cards/>},
-    {path:"/",element:<HomePage/>,exact:true},
+    {path:"/",element:<HomePage/> },
     
 ]
 export default routes;
