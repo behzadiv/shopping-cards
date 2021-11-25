@@ -14,12 +14,11 @@ const cartReducer = (state, action) => {
         selectedCart.quantity++;
         updatedCart[updatedItemIndex] = selectedCart;
       }
-      return { ...state, cart: updatedCart , total:state.total + action.payload.price };
+      return { ...state, cart: updatedCart , total:state.total + action.payload.offPrice };
       break;
     
     case "DECREMENT_CART_QTY": {
       const updatedCart = [...state.cart];
-      let totalPrice = state.total
       const updatedItemIndex = updatedCart.findIndex(
         (item) => item.id === action.payload.id
       );
@@ -27,11 +26,11 @@ const cartReducer = (state, action) => {
         const selectedCart = { ...updatedCart[updatedItemIndex] };
         selectedCart.quantity--;
         updatedCart[updatedItemIndex] = selectedCart;
-        return { ...state, cart: updatedCart,total:state.total -action.payload.price }
+        return { ...state, cart: updatedCart,total:state.total -action.payload.offPrice }
       }else{
         const filteredCarts = updatedCart.filter((cart)=>cart.id !==action.payload.id)
         console.log(filteredCarts);
-        return { ...state, cart: filteredCarts,total:state.total -action.payload.price  }
+        return { ...state, cart: filteredCarts,total:state.total -action.payload.offPrice  }
     }
       ;
     }
