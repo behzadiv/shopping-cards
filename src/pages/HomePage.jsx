@@ -4,11 +4,13 @@ import "./HomePage.css"
 import { useCart, useCartActions } from "../provider/CartProvider";
 import { NavLink } from "react-router-dom"
 import { checkInCart } from "../utils/CheckInCart";
+import { toast } from 'react-toastify';
 
 const HomePage = () => {
     const {cart}=useCart()
     const dispatch = useCartActions()
     const addHandler=(product)=>{
+        toast.success(`${product.name} added to cart!`)
         dispatch({type:"ADD_TO_CART",payload:product})
     }
     return ( 
