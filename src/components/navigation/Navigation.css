@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    position: relative;
 }
 .mainNavigation a{
     margin: 0 1rem;
@@ -20,4 +20,13 @@
 .mainNavigation a:hover,.activeLink{
     background-color: #fff;
     color:#6D28D9 ;
+}
+.basket{
+    position: absolute;
+    top: -10px;
+    background-color: #6D28D9;
+    padding: 5px 9px;
+    border-radius: 50%;
+    color: white;
+    font-size: 14px;
 }

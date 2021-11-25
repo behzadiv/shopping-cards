@@ -7,8 +7,8 @@ import Layout from "./Layout/layout";
 import CartProvider from "./provider/CartProvider";
 function App() {
   return (
-    <Layout>
-      <CartProvider>
+    <CartProvider>
+      <Layout>
         <Routes>
           {routes.map((route) => (
             <Route {...route} />
@@ -16,8 +16,8 @@ function App() {
           {/* <Route path="/" element={<HomePage />} />
         <Route path="/cards" element={<Cards />} /> */}
         </Routes>
-      </CartProvider>
-    </Layout>
+      </Layout>
+    </CartProvider>
   );
 }
 
