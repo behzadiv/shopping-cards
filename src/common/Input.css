@@ -1,0 +1,79 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25rem;
+    margin:100px auto;
+    border: 1px solid rgb(41, 13, 94);
+    padding: 40px 40px;
+    background-color: white;
+  }
+  input[type="tel"],
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],select
+  {
+    padding: 8px 0px;
+    border: 1px solid rgba(179, 136, 136, 0.445);
+    background-color: white;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    color: rgb(41, 24, 24);
+    margin:8px 0px ;
+  }
+  form div input:focus {
+    border: 2px solid rgba(103, 34, 221, 0.733);
+  }
+  form label{
+    color: rgba(105, 97, 97, 0.986);
+    font-size: small;
+    display: flex;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+  .error {
+    color: red;
+    margin: 5px 0 0  5px ;
+  }
+  button {
+    font-size: larger;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: rgba(137, 43, 226, 0.897);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 30px;
+  }
+  button:disabled {
+    font-size: larger;
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgba(189, 171, 171, 0.664);
+    border: none;
+    color: white;
+    cursor: not-allowed;
+    margin-top: 20px;
+  }
+  .radioBtn ,.checkBox,.term{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+  input + label {
+      margin-left: 5px;
+      margin-right: 20px;
+      
+  }
+  form>label{
+    font-size:large;
+    font-family: 'Helvetica Neue', sans-serif;
+    color:rgba(53, 41, 168, 0.808);
+    margin:5px 0;
+  }
+  
+  label a {
+    margin: 0 5px;
+  }
