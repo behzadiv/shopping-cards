@@ -2,6 +2,7 @@ import { useCart, useCartActions } from "../provider/CartProvider";
 import "./Carts.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const Carts = () => {
   const { cart, total } = useCart();
@@ -69,23 +70,34 @@ const Carts = () => {
 export default Carts;
 
 const SummuryCart = ({ cart, total }) => {
-  const originalTotalPrice = cart.reduce((acc,curr)=> acc + curr.price * curr.quantity ,0)
-  console.log(cart,originalTotalPrice);
+  const originalTotalPrice = cart.reduce(
+    (acc, curr) => acc + curr.price * curr.quantity,
+    0
+  );
+  console.log(cart, originalTotalPrice);
   return (
     <section className="totalSection">
-        <h3>Cart summury : </h3>
-        <div>
-          <p>Original total price</p>
-          <p>{originalTotalPrice} $</p>
-        </div>
-        <div>
-          <p>Discount cart</p>
-          <p>{originalTotalPrice - total} $</p>
-        </div>
-        <div>
-          <p>Net total price</p>
-          <p>{total} $</p>
-        </div>
+      <h3>Cart summury : </h3>
+      <div>
+        <p>Original total price</p>
+        <p>{originalTotalPrice} $</p>
+      </div>
+      <div>
+        <p>Discount cart</p>
+        <p>{originalTotalPrice - total} $</p>
+      </div>
+      <div>
+        <p>Net total price</p>
+        <p>{total} $</p>
+      </div>
+      <Link to="/checkout">
+        <button
+          className="btn primary"
+          style={{ marginTop: "20px", width: "100%" }}
+        >
+          Go to checkout
+        </button>
+      </Link>
     </section>
   );
 };
