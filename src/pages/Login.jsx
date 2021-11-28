@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
+import { useAuthActions } from "../provider/AuthProvider";
 const initialValues = {
   email: "",
   password: "",
@@ -18,14 +19,16 @@ const validationSchema = Yup.object({
 
 const Login = () => {
   const navigate = useNavigate()
+  const setAuth = useAuthActions()
   const[error,setError]=useState(null)
   const onSubmit =async (values) => {
     await axios.post("http://localhost:5000/api/user/login",values)
     .then((response)=>{
       setError(null)
-      console.log(response.data.token);
-      localStorage.setItem("user",response.data.token)
-      //navigate("/")
+      console.log(response.data);
+      setAuth(response.data)
+      localStorage.setItem("authState",JSON.stringify(response.data))
+      navigate("/")
     })
     .catch((error)=>{
       console.log(error.response.data)

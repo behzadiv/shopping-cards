@@ -3,11 +3,12 @@ import Input from "../common/Input";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { useState } from "react";
 import "../common/Input.css"
+import { useAuthActions } from "../provider/AuthProvider";
 const initialValues = {
   name: "",
   email: "",
@@ -38,6 +39,8 @@ const validationSchema = Yup.object({
 
 const Signup = () => {
     const [error,setError]=useState(null)
+    const setAuth=useAuthActions()
+    const navigate = useNavigate()
     const onSubmit = async(values) => {
         //console.log(values);
         const {name,email,phoneNumber,password}= values
@@ -49,17 +52,14 @@ const Signup = () => {
         }
         await axios
           .post("http://localhost:5000/api/user/register", userData)
-          .then(() =>
-          //   {actions.resetForm({
-          //     name: "",
-          //     email: "",
-          //     phoneNumber: "",
-          //     password: "",
-          //     passwordConfirmation: "",
-      
-          //   }
-          {console.log(userData);
-          toast.success("Your signUp is complete")}
+          .then((response) =>
+            {
+          //console.log(userData);
+          setAuth(response.data)
+          localStorage.setItem("authState",JSON.stringify(response.data))
+          toast.success("Your signUp is complete")
+          navigate("/")
+        }
             )
           .catch((err) => {
               console.log(err.response.data)
