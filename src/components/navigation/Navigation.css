@@ -1,9 +1,14 @@
 .mainNavigation {
     background-color:#DBEAFE;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 4.5rem;
+    width: 100%;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: sticky;
+    top: 0;
 }
 .mainNavigation ul{
     display: flex;
