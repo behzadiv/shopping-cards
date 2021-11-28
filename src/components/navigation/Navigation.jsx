@@ -30,7 +30,7 @@ const Navigation = () => {
             </NavLink>
           </li>
           <li>
-            <NavLink to={!userData? "/login" :"/profile"}>{!userData? "login / signup" : "profile"}</NavLink>
+            <NavLink className={(navData) => (navData.isActive ? "activeLink" : "")}to={!userData? "/login" :"/profile"}>{!userData? "login / signup" : "profile"}</NavLink>
           </li>
         </ul>
       </nav>
