@@ -1,14 +1,14 @@
 import Input from "../common/Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useState } from "react";
 const initialValues = {
   email: "",
   password: "",
 };
-const onSubmit = (values) => {
-  console.log(values);
-};
+
 const validationSchema = Yup.object({
   email: Yup.string()
     .email("Invalid Email Address")
@@ -17,6 +17,23 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+  const navigate = useNavigate()
+  const[error,setError]=useState(null)
+  const onSubmit =async (values) => {
+    await axios.post("http://localhost:5000/api/user/login",values)
+    .then((response)=>{
+      setError(null)
+      console.log(response.data.token);
+      localStorage.setItem("user",response.data.token)
+      //navigate("/")
+    })
+    .catch((error)=>{
+      console.log(error.response.data)
+      if(error.response && error.response.data.message){
+        setError(error.response.data.message)
+      }
+    })
+  };
   const formik = useFormik({
     initialValues: initialValues,
     onSubmit,
@@ -32,9 +49,10 @@ const Login = () => {
           formik={formik}
           label="Password"
         />
-        <button type="submit" disabled={!formik.isValid}>
+        <button type="submit" disabled={!formik.isValid} className="formBtn">
           Login
         </button>
+        {error && <p style={{color:"red" , marginTop:"10px"}}>{error}</p>}
         <Link to="/signup">
           <p style={{ marginTop: "10px" }}>Not signup yet?</p>
         </Link>
