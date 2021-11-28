@@ -13,7 +13,7 @@ form {
   input[type="email"],
   input[type="password"],select
   {
-    padding: 8px 0px;
+    padding: 8px 10px;
     border: 1px solid rgba(179, 136, 136, 0.445);
     background-color: white;
     border-radius: 5px;
@@ -35,7 +35,7 @@ form {
     color: red;
     margin: 5px 0 0  5px ;
   }
-  button {
+  .formBtn {
     font-size: larger;
     width: 100%;
     padding: 10px 20px;
@@ -46,7 +46,7 @@ form {
     cursor: pointer;
     margin-top: 30px;
   }
-  button:disabled {
+  .formBtn:disabled {
     font-size: larger;
     width: 100%;
     padding: 10px 20px;

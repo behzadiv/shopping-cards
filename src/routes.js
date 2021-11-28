@@ -1,4 +1,4 @@
-import Cards from "./pages/Carts";
+import Carts from "./pages/Carts";
 import Checkout from "./pages/Checkout";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
@@ -8,7 +8,7 @@ const routes = [
     {path:"/signup",element:<Signup/> },
     {path:"/login",element:<Login/> },
     {path:"/checkout",element:<Checkout/> },
-    {path:"/cards",element:<Cards/>},
+    {path:"/carts",element:<Carts/>},
     {path:"/",element:<HomePage/> },
     
 ]

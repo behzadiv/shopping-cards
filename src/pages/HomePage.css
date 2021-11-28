@@ -8,8 +8,8 @@
 }
 .product{
     background-color: rgb(224, 224, 243);
-    display: flex;
-    flex-direction: column;
+    display: flex ;
+    flex-direction: column ;
     border-radius: 5px;
 }
 .productImg img{
@@ -18,9 +18,9 @@
 }
 .productDesc{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between ;
   padding: 10px;
- 
+ align-items: center;
 
 }
 
@@ -32,6 +32,7 @@
     color:#fff ;
     background-color: #EDE9FE;
     cursor: pointer;
+    
 }
 .primary{
     color: #fff;

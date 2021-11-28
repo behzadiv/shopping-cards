@@ -1,8 +1,6 @@
 import "./App.css";
-import HomePage from "./pages/HomePage";
 import { Routes, Route } from "react-router-dom";
 import routes from "./routes";
-import Cards from "./pages/Carts";
 import Layout from "./Layout/layout";
 import CartProvider from "./provider/CartProvider";
 import { ToastContainer } from "react-toastify";
@@ -14,7 +12,7 @@ function App() {
         <ToastContainer />
         <Routes>
           {routes.map((route) => (
-            <Route {...route} />
+            <Route {...route} key={route.path}/>
           ))}
           {/* <Route path="/" element={<HomePage />} />
         <Route path="/cards" element={<Cards />} /> */}

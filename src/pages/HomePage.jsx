@@ -1,8 +1,6 @@
-import Layout from "../Layout/layout";
 import * as data from "../data"
 import "./HomePage.css"
 import { useCart, useCartActions } from "../provider/CartProvider";
-import { NavLink } from "react-router-dom"
 import { checkInCart } from "../utils/CheckInCart";
 import { toast } from 'react-toastify';
 
