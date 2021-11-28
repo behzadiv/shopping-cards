@@ -27,7 +27,7 @@ const Login = () => {
       setError(null)
       console.log(response.data);
       setAuth(response.data)
-      localStorage.setItem("authState",JSON.stringify(response.data))
+     // localStorage.setItem("authState",JSON.stringify(response.data))
       navigate("/")
     })
     .catch((error)=>{

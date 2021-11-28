@@ -56,7 +56,7 @@ const Signup = () => {
             {
           //console.log(userData);
           setAuth(response.data)
-          localStorage.setItem("authState",JSON.stringify(response.data))
+          //localStorage.setItem("authState",JSON.stringify(response.data))
           toast.success("Your signUp is complete")
           navigate("/")
         }

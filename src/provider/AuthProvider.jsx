@@ -9,7 +9,11 @@ const AuthProvider = ({children}) => {
         const userData = JSON.parse(localStorage.getItem("authState")) || false
         setState(userData)
     },[])
-    
+    useEffect(()=>{
+        const data = JSON.stringify(state)
+        localStorage.setItem("authState",data)
+          
+    },[state])
     return ( 
         <AuthContext.Provider value={state} >
             <AuthContextDispatcher.Provider value={setState}>
