@@ -6,9 +6,10 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from 'react-toastify';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../common/Input.css"
-import { useAuthActions } from "../provider/AuthProvider";
+import { useAuth, useAuthActions } from "../provider/AuthProvider";
+import { useQuery } from "../hooks/useQuery";
 const initialValues = {
   name: "",
   email: "",
@@ -41,6 +42,9 @@ const Signup = () => {
     const [error,setError]=useState(null)
     const setAuth=useAuthActions()
     const navigate = useNavigate()
+    const query = useQuery()
+    const redirect = query.get("redirect") || "/"
+   
     const onSubmit = async(values) => {
         //console.log(values);
         const {name,email,phoneNumber,password}= values
@@ -58,7 +62,7 @@ const Signup = () => {
           setAuth(response.data)
           //localStorage.setItem("authState",JSON.stringify(response.data))
           toast.success("Your signUp is complete")
-          navigate("/")
+          navigate(redirect)
         }
             )
           .catch((err) => {
@@ -102,7 +106,7 @@ const Signup = () => {
           Sign up
         </button>
         { error  && <p style={{color:"red"}}>{error}</p>}
-        <Link to="/login">
+        <Link to={`/login/?redirect=${redirect}`}>
           <p style={{ marginTop: "10px" }}>Already login?</p>
         </Link>
       </form>

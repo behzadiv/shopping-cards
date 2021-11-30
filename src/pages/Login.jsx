@@ -1,10 +1,11 @@
 import Input from "../common/Input";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import { useState } from "react";
 import { useAuthActions } from "../provider/AuthProvider";
+import { useQuery } from "../hooks/useQuery";
 const initialValues = {
   email: "",
   password: "",
@@ -19,6 +20,9 @@ const validationSchema = Yup.object({
 
 const Login = () => {
   const navigate = useNavigate()
+  const query = useQuery()
+  const redirect = query.get("redirect") || "/"
+  
   const setAuth = useAuthActions()
   const[error,setError]=useState(null)
   const onSubmit =async (values) => {
@@ -28,7 +32,8 @@ const Login = () => {
       console.log(response.data);
       setAuth(response.data)
      // localStorage.setItem("authState",JSON.stringify(response.data))
-      navigate("/")
+     console.log(redirect); 
+     navigate(redirect)
     })
     .catch((error)=>{
       console.log(error.response.data)
@@ -56,7 +61,7 @@ const Login = () => {
           Login
         </button>
         {error && <p style={{color:"red" , marginTop:"10px"}}>{error}</p>}
-        <Link to="/signup">
+        <Link to={`/signup?redirect=${redirect}`}>
           <p style={{ marginTop: "10px" }}>Not signup yet?</p>
         </Link>
       </form>
