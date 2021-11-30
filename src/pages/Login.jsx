@@ -3,8 +3,8 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
-import { useAuthActions } from "../provider/AuthProvider";
+import { useState,useEffect } from "react";
+import { useAuthActions ,useAuth} from "../provider/AuthProvider";
 import { useQuery } from "../hooks/useQuery";
 const initialValues = {
   email: "",
@@ -22,7 +22,10 @@ const Login = () => {
   const navigate = useNavigate()
   const query = useQuery()
   const redirect = query.get("redirect") || "/"
-  
+  const auth = useAuth()
+   useEffect(()=>{
+    if(auth)navigate(redirect)
+   },[redirect,auth])
   const setAuth = useAuthActions()
   const[error,setError]=useState(null)
   const onSubmit =async (values) => {

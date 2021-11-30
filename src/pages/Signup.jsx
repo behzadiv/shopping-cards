@@ -44,7 +44,10 @@ const Signup = () => {
     const navigate = useNavigate()
     const query = useQuery()
     const redirect = query.get("redirect") || "/"
-   
+   const auth = useAuth()
+   useEffect(()=>{
+    if(auth)navigate(redirect)
+   },[redirect,auth])
     const onSubmit = async(values) => {
         //console.log(values);
         const {name,email,phoneNumber,password}= values
