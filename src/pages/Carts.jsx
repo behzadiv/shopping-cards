@@ -11,7 +11,15 @@ const Carts = () => {
   //console.log(carts.cart);
   //let totalPrice = 0;
   //carts.cart.map((item) => (totalPrice += item.price * item.quantity));
-  if (!cart.length) return <p>There is no product in your carts</p>;
+  if (!cart.length)
+    return (
+      <div className="emptyCart container">
+        <h4>There is no product in your carts...</h4>
+        <Link to="/">
+          <button className="btn primary">Go to shopping</button>
+        </Link>
+      </div>
+    );
   return (
     <main className="cart container">
       <section className="cartList">
@@ -22,7 +30,7 @@ const Carts = () => {
           <h5>Total</h5>
         </div>
         {cart.map((product) => (
-          <section key={product.id}>
+          <div key={product.id}>
             <div className="cartRow">
               <div className="cartName">
                 <img src={product.image} alt={product.name} />
@@ -58,11 +66,12 @@ const Carts = () => {
                 <p> $ {product.price * product.quantity}</p>
               </div>
             </div>
-          </section>
+          </div>
         ))}
       </section>
-
-      <SummuryCart cart={cart} total={total} />
+      
+        <SummuryCart cart={cart} total={total} />
+      
     </main>
   );
 };
